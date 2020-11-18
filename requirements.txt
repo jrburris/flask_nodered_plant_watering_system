@@ -1,0 +1,5 @@
+RPi.GPIO==0.7.0
+fake-rpigpio==0.1.1
+fake-rpi==0.7.1
+Flask==1.1.2
+psutil==5.7.3
