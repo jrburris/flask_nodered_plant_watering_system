@@ -12,7 +12,7 @@ $> sudo crontab -e
 
 
 # Senors
-### Adafruit STEMMA Soil Sensor - I2C Capacitive Moisture Sensor
+* Adafruit STEMMA Soil Sensor - I2C Capacitive Moisture Sensor
 
 # Wiring setup
 ### Adafruit STEMMA Soil Sensor - I2C Capacitive Moisture Sensor
