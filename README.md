@@ -11,6 +11,13 @@ $> sudo crontab -e
 @reboot cd <your path to web_plants>; sudo python3 web_plants.py
 
 
-### Development
+### Senors
+# Adafruit STEMMA Soil Sensor - I2C Capacitive Moisture Sensor
 
-https://pypi.org/project/fake-rpigpio/
+### Wiring setup
+# Adafruit STEMMA Soil Sensor - I2C Capacitive Moisture Sensor
+1. Pi 3V3 (Pin 1) to sensor VIN (Red)
+2. Pi SDA (Pin 3) to sensor SDA (White)
+3. Pi SCL (Pin 5) to sensor SCL (Green)
+4. Pi GND (Pin 9) to sensor GND (Black)
+
