@@ -3,11 +3,11 @@ import datetime
 import time
 
 import sys
-import fake_rpi
+# import fake_rpi
 
-sys.modules['RPi'] = fake_rpi.RPi     # Fake RPi
-sys.modules['RPi.GPIO'] = fake_rpi.RPi.GPIO # Fake GPIO
-# sys.modules['smbus'] = fake_rpi.smbus # Fake smbus (I2C)
+# sys.modules['RPi'] = fake_rpi.RPi     # Fake RPi
+# sys.modules['RPi.GPIO'] = fake_rpi.RPi.GPIO # Fake GPIO
+# # sys.modules['smbus'] = fake_rpi.smbus # Fake smbus (I2C)
 
 import RPi.GPIO as GPIO
 
