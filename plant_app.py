@@ -10,9 +10,9 @@ from adafruit_seesaw.seesaw import Seesaw
 import RPi.GPIO as GPIO
 
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-GPIO.setup(4, GPIO.OUT, initial = GPIO.LOW)
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setwarnings(False)
+# GPIO.setup(4, GPIO.OUT, initial = GPIO.LOW)
 
 
 
@@ -51,13 +51,13 @@ def get_soil_sensor():
 
 
 
-@app.route("/last_watered")
-def check_last_watered():
-    try:
-        f = open("last_watered.txt", "r")
-        return f.readline()
-    except:
-        return "NEVER!"
+# @app.route("/last_watered")
+# def check_last_watered():
+#     try:
+#         f = open("last_watered.txt", "r")
+#         return f.readline()
+#     except:
+#         return "NEVER!"
 
 # @app.route("/sensor")
 # def action():
@@ -71,21 +71,21 @@ def check_last_watered():
 #     templateData = template(text = message)
 #     return render_template('main.html', **templateData)
 
-@app.route("/water")
-def action2():
+# @app.route("/water")
+# def action2():
 
-    f = open("last_watered.txt", "w")
-    f.write("Last watered {}".format(datetime.datetime.now()))
-    f.close()
-    time.sleep(1)
-    GPIO.output(4, GPIO.HIGH)
-    time.sleep(1)
-    GPIO.output(4, GPIO.LOW)
-    time.sleep(1)
+#     f = open("last_watered.txt", "w")
+#     f.write("Last watered {}".format(datetime.datetime.now()))
+#     f.close()
+#     time.sleep(1)
+#     GPIO.output(4, GPIO.HIGH)
+#     time.sleep(1)
+#     GPIO.output(4, GPIO.LOW)
+#     time.sleep(1)
 
-    responce = {'status': 'ok'}
+#     responce = {'status': 'ok'}
 
-    return jsonify(responce)
+#     return jsonify(responce)
 
 
 

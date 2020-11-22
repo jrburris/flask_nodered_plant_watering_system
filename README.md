@@ -13,6 +13,7 @@ $> sudo crontab -e
 
 # Senors
 * Adafruit STEMMA Soil Sensor - I2C Capacitive Moisture Sensor
+sudo pip3 install adafruit-circuitpython-seesaw
 
 # Wiring setup
 ### Adafruit STEMMA Soil Sensor - I2C Capacitive Moisture Sensor
