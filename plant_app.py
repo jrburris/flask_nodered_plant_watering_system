@@ -9,33 +9,11 @@ import busio
 from adafruit_seesaw.seesaw import Seesaw
 import RPi.GPIO as GPIO
 
-
-# GPIO.setmode(GPIO.BCM)
-# GPIO.setwarnings(False)
-# GPIO.setup(4, GPIO.OUT, initial = GPIO.LOW)
-
-
-
 i2c_bus = busio.I2C(SCL, SDA)
 ss = Seesaw(i2c_bus, addr=0x36)
 
-
 app = Flask(__name__)
 
-# def template(title = "Plant Helpline!", text = ""):
-#     now = datetime.datetime.now()
-#     timeString = now
-#     templateDate = {
-#         'title' : title,
-#         'time' : timeString,
-#         'text' : text
-#         }
-#     return templateDate
-
-# @app.route("/")
-# def hello():
-#     templateData = template()
-#     return render_template('main.html', **templateData)
 
 @app.route("/soil_sensor")
 def get_soil_sensor():
@@ -50,48 +28,18 @@ def get_soil_sensor():
     return jsonify(responce)
 
 
-
-# @app.route("/last_watered")
-# def check_last_watered():
-#     try:
-#         f = open("last_watered.txt", "r")
-#         return f.readline()
-#     except:
-#         return "NEVER!"
-
-# @app.route("/sensor")
-# def action():
-#     status = water.get_status()
-#     message = ""
-#     if (status == 1):
-#         message = "Water me please!"
-#     else:
-#         message = "I'm a happy plant"
-
-#     templateData = template(text = message)
-#     return render_template('main.html', **templateData)
-
-# @app.route("/water")
-# def action2():
-
-#     f = open("last_watered.txt", "w")
-#     f.write("Last watered {}".format(datetime.datetime.now()))
-#     f.close()
-#     time.sleep(1)
-#     GPIO.output(4, GPIO.HIGH)
-#     time.sleep(1)
-#     GPIO.output(4, GPIO.LOW)
-#     time.sleep(1)
-
-#     responce = {'status': 'ok'}
-
-#     return jsonify(responce)
-
 @app.route("/water")
 def action2():
-    water.pump_on()
-    templateData = template(text = "Watered Once")
-    return render_template('main.html', **templateData)
+    water2.pump_on  
+    responce = {'status': 'done', 'last_watered': "{}".format(datetime.datetime.now())}
+    return jsonify(responce)
+
+
+@app.route("/last_watered")
+def check_last_watered():
+    text = water2.get_last_watered()
+    reponce = {'last_watered': text}
+    return jsonify(reponce)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True)
