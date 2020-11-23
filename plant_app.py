@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, jsonify
 import psutil
 import datetime
 import time
-# import water
+import water
 import os
 from board import SCL, SDA
 import busio
@@ -10,9 +10,9 @@ from adafruit_seesaw.seesaw import Seesaw
 import RPi.GPIO as GPIO
 
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-GPIO.setup(4, GPIO.OUT, initial = GPIO.LOW)
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setwarnings(False)
+# GPIO.setup(4, GPIO.OUT, initial = GPIO.LOW)
 
 
 
@@ -71,23 +71,27 @@ def get_soil_sensor():
 #     templateData = template(text = message)
 #     return render_template('main.html', **templateData)
 
+# @app.route("/water")
+# def action2():
+
+#     f = open("last_watered.txt", "w")
+#     f.write("Last watered {}".format(datetime.datetime.now()))
+#     f.close()
+#     time.sleep(1)
+#     GPIO.output(4, GPIO.HIGH)
+#     time.sleep(1)
+#     GPIO.output(4, GPIO.LOW)
+#     time.sleep(1)
+
+#     responce = {'status': 'ok'}
+
+#     return jsonify(responce)
+
 @app.route("/water")
 def action2():
-
-    f = open("last_watered.txt", "w")
-    f.write("Last watered {}".format(datetime.datetime.now()))
-    f.close()
-    time.sleep(1)
-    GPIO.output(4, GPIO.HIGH)
-    time.sleep(1)
-    GPIO.output(4, GPIO.LOW)
-    time.sleep(1)
-
-    responce = {'status': 'ok'}
-
-    return jsonify(responce)
-
-
+    water.pump_on()
+    templateData = template(text = "Watered Once")
+    return render_template('main.html', **templateData)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True)
