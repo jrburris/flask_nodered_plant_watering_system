@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, jsonify
 import psutil
 import datetime
 import time
-import water
+import water2
 import os
 from board import SCL, SDA
 import busio
