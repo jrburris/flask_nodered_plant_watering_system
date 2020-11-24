@@ -30,7 +30,7 @@ def get_soil_sensor():
 
 @app.route("/water")
 def action2():
-    water2.pump_on  
+    water2.pump_on()
     responce = {'status': 'done', 'last_watered': "{}".format(datetime.datetime.now())}
     return jsonify(responce)
 
