@@ -20,13 +20,13 @@ def get_last_watered():
 
 
 
-def pump_on():
+def pump_on(delay):
 
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
     GPIO.setup(pin, GPIO.OUT)
     GPIO.output(pin, GPIO.HIGH)
-    time.sleep(1)
+    time.sleep(delay)
     GPIO.output(pin, GPIO.LOW)
     GPIO.cleanup()
 
